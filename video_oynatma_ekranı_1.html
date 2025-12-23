@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Video Playback Screen</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                "primary": "#137fec",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+                "surface-dark": "#1e2732", // Slightly lighter than background-dark for cards/chips
+                },
+                fontFamily: {
+                "display": ["Plus Jakarta Sans", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+            },
+        }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Custom scrollbar hiding for horizontal lists */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white overflow-x-hidden w-full">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-hidden">
+<!-- Video Player Section (Sticky) -->
+<div class="sticky top-0 z-50 w-full bg-black">
+<div class="relative flex items-center justify-center bg-black aspect-video w-full group">
+<!-- Video Placeholder Image -->
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="Mountain landscape video thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcx2-ATVCYN_UQk7Tzu5CsXD1trMxtT_9DWsikdV2m0IyW5YaxJxiZhuMW1f5zfYZObJKAFqYGdr9Ntic8XZtI44HCVM_bZYvdnqKN9xMMHLBKexxrc9VW0k4tElO1FuJQqU5mYhYRYO-NKVaPycDIohOd2p6J4_wvb-tqOmRChawIBY8l6PhAwxszCUFGxDgV-JoNdASq7leodx55RI1_z9gmDy-7jrpZzET-xEfphzCaVwC_SE3a_QJNsaTnDJutOu5FYqE0j61m");'>
+</div>
+<!-- Top Overlay Controls -->
+<div class="absolute top-0 inset-x-0 p-4 flex justify-between items-start bg-gradient-to-b from-black/60 to-transparent">
+<button class="text-white hover:bg-white/10 rounded-full p-2 transition">
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+<div class="flex gap-4">
+<button class="text-white hover:bg-white/10 rounded-full p-2 transition">
+<span class="material-symbols-outlined">cast</span>
+</button>
+<button class="text-white hover:bg-white/10 rounded-full p-2 transition">
+<span class="material-symbols-outlined">closed_caption</span>
+</button>
+<button class="text-white hover:bg-white/10 rounded-full p-2 transition">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+<!-- Play Button -->
+<button class="relative flex shrink-0 items-center justify-center rounded-full w-16 h-16 bg-black/40 text-white backdrop-blur-sm border border-white/20">
+<span class="material-symbols-outlined text-4xl filled">play_arrow</span>
+</button>
+<!-- Bottom Overlay Controls (Progress) -->
+<div class="absolute inset-x-0 bottom-0 px-4 py-3 bg-gradient-to-t from-black/80 to-transparent">
+<div class="flex items-center justify-between text-xs font-medium text-white mb-2">
+<span>0:37</span>
+<span class="text-white/70">2:23</span>
+</div>
+<div class="group/slider relative flex h-4 items-center cursor-pointer">
+<!-- Progress Background -->
+<div class="absolute h-1 w-full rounded-full bg-white/30"></div>
+<!-- Progress Fill -->
+<div class="absolute h-1 w-[30%] rounded-full bg-primary"></div>
+<!-- Scrubber Knob -->
+<div class="absolute left-[30%] h-3 w-3 -translate-x-1.5 rounded-full bg-primary shadow-lg scale-0 group-hover/slider:scale-100 transition-transform"></div>
+</div>
+<!-- Bottom Controls Row -->
+<div class="flex justify-between items-center mt-1">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white text-[20px] cursor-pointer">skip_next</span>
+<span class="material-symbols-outlined text-white text-[20px] cursor-pointer">volume_up</span>
+</div>
+<span class="material-symbols-outlined text-white text-[20px] cursor-pointer">fullscreen</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Scroll Area -->
+<div class="flex flex-col flex-1 pb-8">
+<!-- Metadata Section -->
+<div class="px-4 pt-4 pb-2">
+<h1 class="text-white dark:text-white text-xl md:text-2xl font-bold leading-tight tracking-tight line-clamp-2">
+                    Exploring the Mountains of Switzerland | 4K Cinematic
+                </h1>
+<div class="flex items-center gap-2 mt-2 text-sm text-gray-400">
+<span>1.2M views</span>
+<span>•</span>
+<span>2 days ago</span>
+<button class="text-white/80 font-medium ml-1">...more</button>
+</div>
+</div>
+<!-- Profile Header -->
+<div class="flex items-center justify-between px-4 py-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover bg-center ring-1 ring-white/10" data-alt="Creator profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGxj0npc1cgIR7Be3u9VvHB8fTqySzK4CCAEAh9FjsBWS7nE5bXw9ALzkHjBugkgY7gXI6CnCw6xRlXZX_4TWQ9gTowIr6Uxi0i4FVZuBQ_j9ntZZRNc_qzY391UF2RzT1JwswO8p53NjKPT7rK7S3MfjpmtR2y6fb06LmRQ4EDIBodZszD1yuR2tz4vMf59KvHo-Fp2730G82UK5iMfRoeHCn9VMgH0DqSrhw0jZQ6k1X7DoE564OZCBvKIJeUgJmTJ143KXNGTlq");'>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-bold text-white leading-none">TravelWithUs</span>
+<span class="text-xs text-gray-400 mt-1">250K Subscribers</span>
+</div>
+</div>
+<button class="h-9 px-5 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors">
+                    Subscribe
+                </button>
+</div>
+<!-- Action Chips (Scrollable) -->
+<div class="flex items-center gap-3 px-4 py-2 overflow-x-auto no-scrollbar">
+<!-- Like/Dislike Group -->
+<div class="flex items-center bg-surface-dark rounded-full h-9 shrink-0">
+<button class="flex items-center gap-2 px-4 h-full hover:bg-white/5 rounded-l-full border-r border-white/10 transition">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+<span class="text-xs font-bold">12K</span>
+</button>
+<button class="flex items-center px-4 h-full hover:bg-white/5 rounded-r-full transition">
+<span class="material-symbols-outlined text-[20px]">thumb_down</span>
+</button>
+</div>
+<!-- Share -->
+<button class="flex items-center gap-2 px-4 h-9 bg-surface-dark rounded-full shrink-0 hover:bg-white/5 transition">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span class="text-xs font-bold">Share</span>
+</button>
+<!-- Download -->
+<button class="flex items-center gap-2 px-4 h-9 bg-surface-dark rounded-full shrink-0 hover:bg-white/5 transition">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="text-xs font-bold">Download</span>
+</button>
+<!-- Save -->
+<button class="flex items-center gap-2 px-4 h-9 bg-surface-dark rounded-full shrink-0 hover:bg-white/5 transition">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+<span class="text-xs font-bold">Save</span>
+</button>
+</div>
+<!-- Comments Teaser -->
+<div class="px-4 py-4">
+<div class="bg-surface-dark rounded-xl p-3 cursor-pointer hover:bg-white/5 transition">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-sm font-bold text-white">Comments</span>
+<span class="text-sm text-gray-400">2.4K</span>
+</div>
+<div class="flex gap-3 items-start">
+<div class="w-6 h-6 rounded-full bg-cover bg-center shrink-0" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQl0E952B7DTdC5pnmiOnMalMDcJMSC8HfLbni5RB_UVJQZx52RAyBAKCtw_5Ue_AkeJLkq0T9LEYCbntFgCR7QCyBAnZwunGJ9onvz_3q0tzcy0Ay4aGToTG3vDXQ7yzp4nQVYE65HpyWgyoAtUM9Z7kTxaBdVVf9r3MsqFl8HFZEWQiVdYLa18YkHkMth8VV2Qa9_gwLra2XQCBeSd5YylIIlpFOpJeLuyu3ztUCXIEX5hmHIueGKE-yf9Vb99LTLwI74rN23Rr-");'>
+</div>
+<p class="text-xs text-white line-clamp-2 leading-relaxed">
+                            This is absolutely stunning! The color grading on the drone shots at 2:30 is just pure magic. Keep up the great work! ✨
+                        </p>
+</div>
+</div>
+</div>
+<!-- Up Next Section -->
+<div class="flex flex-col gap-4 px-4 pt-2">
+<!-- Video Item 1 -->
+<div class="flex gap-3 group cursor-pointer">
+<div class="relative w-40 aspect-video rounded-lg overflow-hidden shrink-0">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Norway fjord landscape" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA784tMo4TswYyzSuYhopB0ePHbBTNc6qquxKpQyS7ClcW-4gMuZFlezIPu12iXOZ7lChSctTPjKz-PeuzKCFQj6Q_h7OhkCM1J1ZegJ8BJpVy8-F9tX-d3noB1tMeMagrwVyVYZYO1cld7NcQqlvmMb0HwbsW0K8TWMX6bwsvI4YiZswmc6D4hsUVFm-c4P_aLNbwRUjpPhD4CZUc1HrMY2mjgNXnxYbtuwFwDM173z9a_hjjnX6lEoUgL5jWNTKwM81HrcsBs9TYj");'>
+</div>
+<span class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">
+                            14:20
+                        </span>
+</div>
+<div class="flex flex-col py-1">
+<h3 class="text-sm font-bold text-white leading-tight line-clamp-2 mb-1">
+                            Hiking Trolltunga: The Ultimate Guide to Norway
+                        </h3>
+<p class="text-xs text-gray-400">Nordic Explorer</p>
+<p class="text-xs text-gray-400 mt-0.5">850K views • 1 week ago</p>
+</div>
+<button class="ml-auto self-start text-white/50 hover:text-white">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Video Item 2 -->
+<div class="flex gap-3 group cursor-pointer">
+<div class="relative w-40 aspect-video rounded-lg overflow-hidden shrink-0">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Coffee brewing close up" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsPdPP4rMT5_MfKcPsIbO4RPjQsUHnomjEFAp5I9gpSZODZ44k33KGPa7jtdJTyPvUfvDUgPLnfy1LBPgvZlbgwebJ6zn-EnUpitUOOKnOW33LIW5qMUo4Ak3qEJFZ2cokOZY-FRbrIfJt4zcpy8r92YREAV_53qEixDAiahrjsV_lsE0XxZZmV6Y8SBAH0TZJgND7pyqdlu7Aiy6tq3MlUj2FNrvn-mHtWForZegw8uX95IKbDJJAjsd46p4cdmm6rChKZyUOZb5c");'>
+</div>
+<span class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">
+                            8:45
+                        </span>
+</div>
+<div class="flex flex-col py-1">
+<h3 class="text-sm font-bold text-white leading-tight line-clamp-2 mb-1">
+                            Morning Routine: Cinematic Coffee Brewing 4K
+                        </h3>
+<p class="text-xs text-gray-400">Life of Riza</p>
+<p class="text-xs text-gray-400 mt-0.5">2.1M views • 3 months ago</p>
+</div>
+<button class="ml-auto self-start text-white/50 hover:text-white">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Video Item 3 -->
+<div class="flex gap-3 group cursor-pointer">
+<div class="relative w-40 aspect-video rounded-lg overflow-hidden shrink-0">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Modern minimal desk setup" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDj7eCUlXo6Afe-VEfgUqeUHAx9zlH_22-bpTFALvfK0h-o9wVmBJfOokyFtpWp0njfZYgIfSnYYJJO5XN1KczJ3tfg_hz-mtU07EIV_hEAdjnPq7AT4mqCcHDtgOwQQy2Yq_Z1LF99ud0-N4eH2BJ-MCqG498BSByYJqID_Eu1C61aLNvX-bMx6VsrnHSHYE_TzIVuHu5SQxcfFvM8fTBAl6eTQhYJj_U1H7I5YK7zt24cGgofikTfLD78MG9QGWAWPT9qmww3nplA");'>
+</div>
+<span class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">
+                            12:10
+                        </span>
+</div>
+<div class="flex flex-col py-1">
+<h3 class="text-sm font-bold text-white leading-tight line-clamp-2 mb-1">
+                            My Minimalist Desk Setup 2024 - Productivity Boost
+                        </h3>
+<p class="text-xs text-gray-400">Tech Daily</p>
+<p class="text-xs text-gray-400 mt-0.5">450K views • 5 days ago</p>
+</div>
+<button class="ml-auto self-start text-white/50 hover:text-white">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Video Item 4 -->
+<div class="flex gap-3 group cursor-pointer">
+<div class="relative w-40 aspect-video rounded-lg overflow-hidden shrink-0">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="City skyline at night" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpVZL4gpnl19n7C4_YeOpcqYCwJ6hsLYrxBsFwFc4N6LQW58UkRVOXFhjIbVcWQOLP4HSx53oE4XA9NTBO0e2AR8ROxcwA47nuTArqNJiTmekZg7uBJ6ZQmKf5c2JdiCl6_xR3ZHkktUMudTjNkudaqX1RGx2pY0DtDQGTYjQfRPOJfJqtUYTo156wPFN83ocdE7tqhGH66-oG1yWWPKv8q5-t-yTDqi9CV1uqYoiEJIpwxgmeHL26ZtMGjR3B9buyKwmj6YDZBkhm");'>
+</div>
+<span class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">
+                            22:05
+                        </span>
+</div>
+<div class="flex flex-col py-1">
+<h3 class="text-sm font-bold text-white leading-tight line-clamp-2 mb-1">
+                            Tokyo Night Walk - Binaural Audio - ASMR
+                        </h3>
+<p class="text-xs text-gray-400">Wanderlust</p>
+<p class="text-xs text-gray-400 mt-0.5">3.5M views • 1 year ago</p>
+</div>
+<button class="ml-auto self-start text-white/50 hover:text-white">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Video Item 5 -->
+<div class="flex gap-3 group cursor-pointer">
+<div class="relative w-40 aspect-video rounded-lg overflow-hidden shrink-0">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Cooking pasta italian style" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMG9lZm7XvLbnl-isiCq5na3QhvF8z57U17asHlnVGIFdRIK7CTmTd0_XgAR1Y9rG8v3jyj2arAjqO3Z3zV7DOBCybBBvDuJn06h-RuVvaGTL8b4Rnc5U6dGP8dRSQKP3RV6orjMwONz69gHZf5yJbWueBvMH33bNFgaxx5ULR7TzkL6H3_H5xhXay_pnb4gZaA05669ve0YIDH9hrKstAcQY4M4h0qmU3ehcn0E8VMTvyZ_TbhC7LtGTZ-Ase0cOWOq685j938qY4");'>
+</div>
+<span class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">
+                            18:30
+                        </span>
+</div>
+<div class="flex flex-col py-1">
+<h3 class="text-sm font-bold text-white leading-tight line-clamp-2 mb-1">
+                            Authentic Carbonara Recipe - No Cream!
+                        </h3>
+<p class="text-xs text-gray-400">Chef Mario</p>
+<p class="text-xs text-gray-400 mt-0.5">900K views • 2 weeks ago</p>
+</div>
+<button class="ml-auto self-start text-white/50 hover:text-white">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<div class="h-10"></div> <!-- Bottom Spacer -->
+</div>
+</div>
+</body></html>

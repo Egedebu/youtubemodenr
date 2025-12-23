@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kitaplık Ekranı</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white overflow-x-hidden antialiased">
+<div class="relative flex min-h-screen w-full flex-col pb-24">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 flex items-center justify-between bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md px-4 py-3">
+<div class="flex items-center gap-1 text-[#111418] dark:text-white">
+<div class="flex items-center justify-center rounded-full bg-primary p-1.5">
+<span class="material-symbols-outlined text-white text-[20px]">play_arrow</span>
+</div>
+<span class="ml-1 text-xl font-bold tracking-tight">YouTube</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center text-[#111418] dark:text-white">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</button>
+<button class="flex items-center justify-center text-[#111418] dark:text-white">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</button>
+<div class="h-8 w-8 overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
+<div class="h-full w-full bg-cover bg-center" data-alt="User profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtAfV89NYueh3O4kevcACBN_ryVERHHI9hyFhvd7CjoAdmcOG2kR-QV9piWrxFQAoKBCjk8l4l9b-iElRmqYL8M8GUcIWSmopdWC5K-RvCkAEhKt587v7OH4rHxehrRUg4KS-69qS3y28Q2HA8ttGjabeVvI7m7fagu_fwpj1WNfFNRISa8jVaXA5_erNVMNSb3L2XGABZlrFm7BT71WWzMQVa2uBdL8IsRbHAcsCYSb9TPJZaSdz5D4KDGP85LpejyxmRG0ogYbz5');"></div>
+</div>
+</div>
+</div>
+<!-- History Section -->
+<div class="mt-2 flex flex-col gap-2">
+<div class="flex items-center justify-between px-4 py-2">
+<h2 class="text-lg font-bold leading-tight tracking-tight">Geçmiş</h2>
+<button class="rounded-full px-3 py-1 text-sm font-semibold text-primary hover:bg-primary/10">Tümünü gör</button>
+</div>
+<!-- Horizontal Scroll Container -->
+<div class="flex gap-4 overflow-x-auto px-4 pb-4 no-scrollbar snap-x">
+<!-- History Item 1 -->
+<div class="flex w-[160px] flex-none snap-start flex-col gap-2">
+<div class="relative aspect-video w-full overflow-hidden rounded-xl bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Tech review video thumbnail showing a new smartphone" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDv03QG76b2Rox1clqiTJl-n4yPkPd4D29DhruyBrdTTLbD4_re71HyVyuU0EBa0FOqeL8omHh82pbMQsliobifpoVHmaFjrTTTzmpEVqm7e2unGLZThQyeVAyvwMsv5aBst9TI3OjvtCwil-R5nqgRDVGnGBR3C0z49_utcGhfnHCCk8ohEK-p5iyZRv5v2_gPH9nvpLjjZERDvLIqYtIjN1NICO9C0zIYIBSF57fkKv81uBXuYxdwyUq4lrpdFPW1b466r7O1m7ww');"></div>
+<div class="absolute bottom-1 right-1 rounded bg-black/80 px-1 py-0.5 text-[10px] font-bold text-white">12:04</div>
+<div class="absolute bottom-0 h-1 w-full bg-gray-600">
+<div class="h-full w-[70%] bg-primary"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<h3 class="line-clamp-2 text-sm font-semibold leading-tight text-[#111418] dark:text-white">iPhone 15 Pro Review: The Titanium King</h3>
+<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Marques Brownlee</p>
+</div>
+</div>
+<!-- History Item 2 -->
+<div class="flex w-[160px] flex-none snap-start flex-col gap-2">
+<div class="relative aspect-video w-full overflow-hidden rounded-xl bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Coding tutorial video thumbnail with code editor on screen" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCAREeKT9u7hp6f_ftDGECeOv6LUBz2SUOd3CKBlWlxpvbq37VpRAjdlN1yxfNlU-1Nb3rjiffNLDb_8Mq8s441fKt6wEDC6p0_0b_LTQG6dYNy9jUdJbQRYGSrD_FD2sckl8nfTyLlj3dHAMr1Qn7huM8W7Xuyl05inOpkn-F2o6QpFyLzCHex-56_99kwl57bg4D53geSND9Yg_UyTn0v9p2IFInIiG4djLWYOdy_dsctg7FW44_SBbOcoT2lKrWMXNUoxQNDd05V');"></div>
+<div class="absolute bottom-1 right-1 rounded bg-black/80 px-1 py-0.5 text-[10px] font-bold text-white">45:20</div>
+<div class="absolute bottom-0 h-1 w-full bg-gray-600">
+<div class="h-full w-[30%] bg-primary"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<h3 class="line-clamp-2 text-sm font-semibold leading-tight text-[#111418] dark:text-white">Build a Modern UI with Tailwind CSS</h3>
+<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">DesignCourse</p>
+</div>
+</div>
+<!-- History Item 3 -->
+<div class="flex w-[160px] flex-none snap-start flex-col gap-2">
+<div class="relative aspect-video w-full overflow-hidden rounded-xl bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Nature documentary thumbnail featuring a forest landscape" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4VmY1GNUkIhAW8gBXYEBTdZcEVZMim20kmnSrgyi1ZhrARf_muVWiSo5MBXiitZR0xVMo_GbMtXU9jeBb114Urxtl94AvISFiGF6gKe03hVr0LYPHTl7YMtcPIpKVwd_DyAv_YWFBgMvr45IO7xNeVy6TteB7jLm3UIib9oY6N3jMKfOQ9BEucmobxYugZ9qy5JGb6KnozsOCl8QCJKa0EmSRbwLIlwAEU6VW5DWVL27Qvfb1v4tmU1sluPrslXHPAwH0OEkm6C2x');"></div>
+<div class="absolute bottom-1 right-1 rounded bg-black/80 px-1 py-0.5 text-[10px] font-bold text-white">28:15</div>
+</div>
+<div class="flex flex-col">
+<h3 class="line-clamp-2 text-sm font-semibold leading-tight text-[#111418] dark:text-white">Hidden Wonders of the Amazon Rainforest</h3>
+<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Nat Geo Wild</p>
+</div>
+</div>
+<!-- History Item 4 -->
+<div class="flex w-[160px] flex-none snap-start flex-col gap-2">
+<div class="relative aspect-video w-full overflow-hidden rounded-xl bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Cooking recipe video thumbnail showing pasta dish" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdcWR3Gw3m4LJSHDyAMJduVN0tL9Yxg29SPnPCyvWmqbam8wv1vmp3DEWMWjugLZwX34_ar6cGTFNm4zKa7ckVLKy44vRgB_L1p337umWeUZ7CfF7ukDfKPHPd51-0vmUpvlMRNLEFJj-zsYBrBxQpz6uZERy6cE-hDZPmqwmpDGrOI7q4k69zpAUF3gH_pI3Tf2LTQ9ny4COftXEnkNUx8VIWrj-npdb3dmZqSzF2cfNJktl_xBdBcx1SCqcvsaklXiCWApkWx63L');"></div>
+<div class="absolute bottom-1 right-1 rounded bg-black/80 px-1 py-0.5 text-[10px] font-bold text-white">08:42</div>
+<div class="absolute bottom-0 h-1 w-full bg-gray-600">
+<div class="h-full w-[90%] bg-primary"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<h3 class="line-clamp-2 text-sm font-semibold leading-tight text-[#111418] dark:text-white">Authentic Carbonara in 10 Minutes</h3>
+<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Vincenzo's Plate</p>
+</div>
+</div>
+</div>
+</div>
+<div class="my-2 h-px w-full bg-gray-200 dark:bg-gray-800"></div>
+<!-- Core Navigation List -->
+<div class="flex flex-col px-2">
+<!-- Item -->
+<button class="flex w-full items-center justify-between rounded-xl px-3 py-4 active:bg-gray-100 dark:active:bg-gray-800">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
+<span class="material-symbols-outlined text-primary">play_circle</span>
+</div>
+<span class="text-base font-medium text-[#111418] dark:text-white">Videolarınız</span>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+<!-- Item -->
+<button class="flex w-full items-center justify-between rounded-xl px-3 py-4 active:bg-gray-100 dark:active:bg-gray-800">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
+<span class="material-symbols-outlined text-primary">download</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="text-base font-medium text-[#111418] dark:text-white">İndirilenler</span>
+<span class="text-xs text-gray-500 dark:text-gray-400">24 video</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400">check_circle</span>
+</button>
+<!-- Item -->
+<button class="flex w-full items-center justify-between rounded-xl px-3 py-4 active:bg-gray-100 dark:active:bg-gray-800">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
+<span class="material-symbols-outlined text-primary">movie</span>
+</div>
+<span class="text-base font-medium text-[#111418] dark:text-white">Filmleriniz</span>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+</div>
+<div class="my-2 h-px w-full bg-gray-200 dark:bg-gray-800"></div>
+<!-- Playlists Section -->
+<div class="flex flex-col px-4 pt-4">
+<div class="mb-4 flex items-center justify-between">
+<h2 class="text-lg font-bold leading-tight tracking-tight">Oynatma Listeleri</h2>
+<button class="flex items-center gap-1 rounded-full px-3 py-1 text-sm font-semibold text-primary hover:bg-primary/10">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Yeni
+                </button>
+</div>
+<!-- Playlist Filter Chips -->
+<div class="mb-4 flex gap-2 overflow-x-auto no-scrollbar">
+<button class="shrink-0 rounded-lg bg-[#111418] dark:bg-white px-4 py-1.5 text-sm font-medium text-white dark:text-black">A-Z</button>
+<button class="shrink-0 rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-1.5 text-sm font-medium text-[#111418] dark:text-white">Son Eklenenler</button>
+</div>
+<div class="flex flex-col gap-4 pb-6">
+<!-- Watch Later -->
+<div class="flex items-center gap-4">
+<div class="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600">
+<span class="material-symbols-outlined text-white">schedule</span>
+<div class="absolute bottom-1 right-1 rounded bg-black/40 px-1 py-0.5 text-[9px] font-bold text-white">125</div>
+</div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-bold leading-tight text-[#111418] dark:text-white">Daha Sonra İzle</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400">Gizli oynatma listesi</p>
+</div>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Liked Videos -->
+<div class="flex items-center gap-4">
+<div class="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500">
+<span class="material-symbols-outlined text-white">thumb_up</span>
+<div class="absolute bottom-1 right-1 rounded bg-black/40 px-1 py-0.5 text-[9px] font-bold text-white">842</div>
+</div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-bold leading-tight text-[#111418] dark:text-white">Beğendiğim Videolar</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400">4 video (gizli)</p>
+</div>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Custom Playlist 1 -->
+<div class="flex items-center gap-4">
+<div class="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-gray-800">
+<div class="h-full w-full bg-cover bg-center" data-alt="Abstract gradient cover for gym playlist" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBeKPJngZuGtRhdGATH6kEQBRkha5L04PjH2istMZwh-TI4aL0a-isGFcwYSmuN4eae-7pLRezlLQZ_EzfSoOZ8Sg0cCgk_V23VUCiifzi02oQ0ThBWVdPpVCXdOaFQc7_LYqy9mOyMhnzLUuOiOCga5wtBAXblrTPrPFhE6xRY5j5jaWy3dgx4PHdbyas2zZ1K5ExHIfnSYY3-SojBIlWN54Se5R-yqdOLe7OF7M4xJpAYNve7Cc6zn1R3eSL1D3OIxsjyKqlMXvRI');"></div>
+</div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-bold leading-tight text-[#111418] dark:text-white">Gym Motivation 🔥</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400">Kerem Yılmaz • 45 video</p>
+</div>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Custom Playlist 2 -->
+<div class="flex items-center gap-4">
+<div class="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-gray-800">
+<div class="h-full w-full bg-cover bg-center" data-alt="Lofi hip hop image for study playlist" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAv-tIvRwNmqe4qebQ4AO1ZqITEMXii5psd7IHXUPhvQsvTpnfvKRKNMCQ8tlgTFjRM7F1Z0S7VH2DApV4xzAViTVsuyGdN5hnXBJz_fS7ueYp_aU9m8k9ohfcqRA9MI69im_KmSlPgS1U1Qb0GTMakExIBMKjz7T1Rp1ZJ-pNZ4LHlY1BEX22qxom1SmpKtbChNGbjCff7tAQCVLz-U05ffhngbVbJ_GLZZupVsLKDRXogR3jRrw7iFvCpsb61rxcX1y_e1iRTvkfa');"></div>
+</div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-bold leading-tight text-[#111418] dark:text-white">Lofi Study ☕️</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400">Kerem Yılmaz • 112 video</p>
+</div>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Custom Playlist 3 -->
+<div class="flex items-center gap-4">
+<div class="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-gray-800">
+<div class="h-full w-full bg-cover bg-center" data-alt="Podcast microphone image for saved podcasts" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4mwJNnwkwNy1rn8GwxMJH_08JQTPDQChWYDycBuWPl-Cv3QNPtczhdxXPqXmwIMUpDDtreNxBEi5_4V9deFf__sLLFYpa-U7hvCcOaR1erV6LAHG3hUaAI6i7FfA8Obrb7GO3rlXtVqwQv941yms6S1OsELXcrNZRjXegfLboG3AT8ywJoCqQtAimibBBX-_D14bksw0ui-FbRg6li0QmTM8Qv9nvwCMh9GEju_2H3Bcyc2UhwbF9Jy_9sxgMLuxftB0OrqWKcS7-');"></div>
+</div>
+<div class="flex flex-1 flex-col gap-0.5">
+<p class="text-base font-bold leading-tight text-[#111418] dark:text-white">Saved Podcasts</p>
+<p class="text-sm font-normal text-gray-500 dark:text-gray-400">Kerem Yılmaz • 8 video</p>
+</div>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Fixed) -->
+<div class="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-background-light dark:border-gray-800 dark:bg-background-dark pb-6 pt-2">
+<div class="flex items-center justify-around px-2">
+<div class="flex flex-col items-center gap-1 opacity-70">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-medium">Ana Sayfa</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-70">
+<span class="material-symbols-outlined text-[24px]">smart_display</span>
+<span class="text-[10px] font-medium">Shorts</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-70">
+<div class="relative">
+<span class="material-symbols-outlined text-[24px]">add_circle</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-70">
+<span class="material-symbols-outlined text-[24px]">subscriptions</span>
+<span class="text-[10px] font-medium">Abonelikler</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#111418] dark:text-white">
+<span class="material-symbols-outlined text-[24px] text-primary fill-1">video_library</span>
+<span class="text-[10px] font-medium text-primary">Kitaplık</span>
+</div>
+</div>
+</div>
+</div>
+</body></html>

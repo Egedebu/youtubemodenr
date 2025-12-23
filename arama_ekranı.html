@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YouTube Style Search Screen</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#0f0f0f", /* Slightly darker than provided for deeper contrast */
+                        "surface-dark": "#1e1e1e", /* Card/Surface color */
+                        "text-secondary": "#aaaaaa",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "0.75rem", 
+                        "xl": "1rem", 
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-gray-900 dark:text-white min-h-screen flex flex-col">
+<!-- Sticky Header Area -->
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm transition-colors border-b border-gray-200 dark:border-gray-800 pb-2">
+<!-- Status Bar Spacer (Simulated for iOS) -->
+<div class="h-12 w-full"></div>
+<!-- Search Input Row -->
+<div class="px-4 flex items-center gap-3 mb-2">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-2xl dark:text-white">arrow_back</span>
+</button>
+<div class="flex-1 flex items-center bg-gray-100 dark:bg-[#222222] h-11 rounded-full px-4 border border-transparent focus-within:border-primary/50 focus-within:bg-white dark:focus-within:bg-[#222222] transition-all group">
+<span class="material-symbols-outlined text-gray-500 dark:text-text-secondary mr-2 group-focus-within:text-primary">search</span>
+<input class="bg-transparent border-none outline-none text-base w-full text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-text-secondary h-full p-0 focus:ring-0" placeholder="YouTube'da ara" type="text" value="UI Tasarım"/>
+<button class="p-1.5 rounded-full bg-gray-200 dark:bg-[#333333] flex items-center justify-center ml-1">
+<span class="material-symbols-outlined text-sm text-gray-600 dark:text-white">close</span>
+</button>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-[#222222] hover:bg-gray-200 dark:hover:bg-[#333333] transition-colors">
+<span class="material-symbols-outlined text-2xl dark:text-white">mic</span>
+</button>
+</div>
+<!-- Filter Chips -->
+<div class="flex overflow-x-auto gap-2 px-4 pb-2 no-scrollbar items-center">
+<!-- Active Chip -->
+<button class="flex shrink-0 items-center justify-center h-8 px-4 rounded-lg bg-white dark:bg-white text-black text-sm font-semibold border border-transparent transition-colors">
+                Tümü
+            </button>
+<!-- Inactive Chips -->
+<button class="flex shrink-0 items-center justify-center h-8 px-4 rounded-lg bg-gray-100 dark:bg-[#222222] text-gray-700 dark:text-white text-sm font-medium border border-gray-200 dark:border-[#333333] hover:bg-gray-200 dark:hover:bg-[#333333] transition-colors">
+                Shorts
+            </button>
+<button class="flex shrink-0 items-center justify-center h-8 px-4 rounded-lg bg-gray-100 dark:bg-[#222222] text-gray-700 dark:text-white text-sm font-medium border border-gray-200 dark:border-[#333333] hover:bg-gray-200 dark:hover:bg-[#333333] transition-colors">
+                Kanal
+            </button>
+<button class="flex shrink-0 items-center justify-center h-8 px-4 rounded-lg bg-gray-100 dark:bg-[#222222] text-gray-700 dark:text-white text-sm font-medium border border-gray-200 dark:border-[#333333] hover:bg-gray-200 dark:hover:bg-[#333333] transition-colors">
+                İzlenmedi
+            </button>
+<button class="flex shrink-0 items-center justify-center h-8 px-4 rounded-lg bg-gray-100 dark:bg-[#222222] text-gray-700 dark:text-white text-sm font-medium border border-gray-200 dark:border-[#333333] hover:bg-gray-200 dark:hover:bg-[#333333] transition-colors">
+                Sana Özel
+            </button>
+<button class="flex shrink-0 items-center justify-center h-8 px-4 rounded-lg bg-gray-100 dark:bg-[#222222] text-gray-700 dark:text-white text-sm font-medium border border-gray-200 dark:border-[#333333] hover:bg-gray-200 dark:hover:bg-[#333333] transition-colors">
+                Canlı
+            </button>
+</div>
+</header>
+<!-- Main Content Feed -->
+<main class="flex-1 flex flex-col gap-1 pb-20">
+<!-- Result 1 -->
+<article class="flex flex-col group active:bg-gray-50 dark:active:bg-[#1a1a1a] transition-colors">
+<div class="relative w-full aspect-video">
+<img alt="Retro computer setup displaying lines of code" class="w-full h-full object-cover" data-alt="Retro computer setup with lines of code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfB6Y-oLuUhEesvKNq2MiVr4rtU63q2jae7bkzH78NsMTKIOrMJHbZFaF6hvrIQVLOtpHvfadfEg10I9wcj-NmtU4AUg8ALa4Dzq0YDxjZqCHtXmhCHzgfpL7zziT7ylkjpRB2FtazUJeOm76FG8i7ztPLCpVd72vFi1WY6uY9NxZF-ML4uoCFxZEfvkFEAXEaJyqdK7dHo15zwbOc2GpdZLlAH0Zwr65Z3USh-Zj6Wq73NNPP_wptUPKEH47a6hw_QtGCeGpw1QS4"/>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-medium px-1.5 py-0.5 rounded text-[10px] tracking-wide">
+                    12:45
+                </div>
+</div>
+<div class="flex gap-3 p-3 items-start">
+<img alt="Man with glasses avatar" class="w-10 h-10 rounded-full object-cover shrink-0" data-alt="Profile picture of a tech content creator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUFCd9pP7H5ltC8100-Ve2x1ZaNmLD1vOffXU3I_rGTieUk7v_z61ZsgoyYRIhpTLAaNDQ77FyOc-7g6z0ilGB_hMw7TWADmyUdNgv-dz1hGUZHUTE4PwcMZ2h96I7beQZrm6vt0kc62VuEvRZQUR9ffMPLtaykqQsOyqWVNyHp6w4F7CsavYUsLaYjhy1Gs5aSlp0kEibQ7hJkPbctbm-eQ8h__TP9Brk94V0SnmNu077Vo5TxLvJBTpAbTZeK7qf09kl1BlswNeh"/>
+<div class="flex flex-col flex-1 gap-1">
+<div class="flex justify-between items-start">
+<h3 class="text-base font-semibold text-gray-900 dark:text-white leading-tight line-clamp-2">
+                            2024 UI Tasarım Trendleri: Geleceğin Arayüzleri Nasıl Olacak?
+                        </h3>
+<button class="text-gray-900 dark:text-white p-1 -mr-2 -mt-2">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="text-xs text-gray-600 dark:text-text-secondary flex items-center flex-wrap gap-1">
+<span>Tasarım Günlüğü</span>
+<span class="text-[10px]">•</span>
+<span>125B görüntüleme</span>
+<span class="text-[10px]">•</span>
+<span>2 gün önce</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Shorts Section -->
+<div class="py-4 border-t border-b border-gray-200 dark:border-[#222222] mt-2 mb-2">
+<div class="flex items-center gap-2 px-4 mb-4">
+<img alt="Shorts Logo" class="w-5 h-5" data-alt="YouTube Shorts red logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOMdRQk-XVt1SYZEUgNXxj7slKdrxin-tWovtQIDNXX-r7939ns1dw4319fu9qNU0-0LfxCd_dp3X9ys9SO1JEu3W47sg6Cfag5e2Dh7QTt96f3jeqiiep4gvvM5aeRqpL4iTk_ClMoNW11nrf4hqnpR7oyH_0CGvpUb4M3t7yuHPE5rsK1FaInDEWGZk7TuIXd4X9OvcSbR6lmF6IqwzXE6WucXAroVCj_-LkyCvQzELqGmr1L8G-xHFPdtpL5QEXR7doya3TjzQ0"/>
+<span class="text-lg font-bold text-gray-900 dark:text-white">Shorts</span>
+</div>
+<div class="flex overflow-x-auto gap-4 px-4 no-scrollbar snap-x">
+<!-- Short 1 -->
+<div class="w-40 shrink-0 snap-center">
+<div class="relative aspect-[9/16] rounded-xl overflow-hidden mb-2">
+<img alt="Colorful gradient abstract art" class="w-full h-full object-cover" data-alt="Abstract colorful gradient shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrpxTBptv9dbV6SEOeWh66hjbjM_9CMXgsbo1VUUUId4viS3hYWY-6UlhajmvZiB1Qjo-qLSL6LtXYOf-TIHu4Q0DaPh7BYQMSeVCLkkuVzGEkVCYZOUcgb-yexqRWHuDnNDEJMkjtPkfjmN1JBQUkZJv-bDefW9FKAbkxQuRJihk8DozBBDByOMgj0VAMfpha-cjlEMQ3srApkI6JbMXDDG1hRUURUO4j1cb-Y39po5oUxiln32qTGXPYp-LYuFaUUG14c8pwmjgg"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/30"></div>
+<div class="absolute bottom-2 right-2">
+<span class="material-symbols-outlined text-white drop-shadow-md">more_vert</span>
+</div>
+</div>
+<p class="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 leading-tight">UX İpuçları #1: Renk Teorisi</p>
+<p class="text-xs text-gray-600 dark:text-text-secondary mt-1">1.2M görüntüleme</p>
+</div>
+<!-- Short 2 -->
+<div class="w-40 shrink-0 snap-center">
+<div class="relative aspect-[9/16] rounded-xl overflow-hidden mb-2">
+<img alt="Coding on screen close up" class="w-full h-full object-cover" data-alt="Close up of code on a monitor screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvvqkTWG6Y53-raacr5opdUwLPW_IlK-QqGzA8q_L5itef-usjH7dplAsKRzp9b_wnLbFN_hovtxN-xs3nrRCbtxhjMNryAOxOGXyHPnrk7AW2bAvkdn7EjUg9SlcCO1Fpkv-UJN76Kf6NN5wX1F4FBbHo5Q6MAYDE5hb0SADQjCGzNvGsoK602IV7CHdYhbOWZ9AJ9d_sOjbtOYvjROZZtpHXOnuPkwww_4n1C6Ijyzr8Xzcm9LNFIIIDfzU7iF17PmjJ7Kt-4Vts"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/30"></div>
+<div class="absolute bottom-2 right-2">
+<span class="material-symbols-outlined text-white drop-shadow-md">more_vert</span>
+</div>
+</div>
+<p class="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 leading-tight">Hızlı Kodlama Hileleri</p>
+<p class="text-xs text-gray-600 dark:text-text-secondary mt-1">450B görüntüleme</p>
+</div>
+<!-- Short 3 -->
+<div class="w-40 shrink-0 snap-center">
+<div class="relative aspect-[9/16] rounded-xl overflow-hidden mb-2">
+<img alt="Modern office desk setup" class="w-full h-full object-cover" data-alt="Clean minimal desk setup with keyboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7raYMWXLPkiD3DX4-HmHKM2YjL_-Ze83e0cHMOUhVXHTFd2Tn_VFVvuN3h2hQGySeVy5ZZReh3PRXhRwuFFQiPw1m4Q1Rv0nyEpwXKyU0FNr5mhek5_7_Sh_Qx2mQ-v8VQ8yF3qFcsScqLsxmZAQDHpHada7R_ICqT6h_YAmR6skAUNk5SORgb1-CFi2W0h6uDAgRfQhQDQYVrgRX3jua6Q6HaAyY-cM9GpWeEySfieCHq7BUmd7wCQPJh3OQ_v1sm_qvMtl7umAE"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/30"></div>
+<div class="absolute bottom-2 right-2">
+<span class="material-symbols-outlined text-white drop-shadow-md">more_vert</span>
+</div>
+</div>
+<p class="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 leading-tight">Home Office Turu</p>
+<p class="text-xs text-gray-600 dark:text-text-secondary mt-1">89B görüntüleme</p>
+</div>
+</div>
+</div>
+<!-- Result 2 -->
+<article class="flex flex-col group active:bg-gray-50 dark:active:bg-[#1a1a1a] transition-colors">
+<div class="relative w-full aspect-video">
+<img alt="React code logo on screen" class="w-full h-full object-cover" data-alt="React logo displayed on a monitor screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtHIVK59FxagjWsMiYQaBoCJr4v7cW5zH_i4k8Wiqx8FX-o6ULz4zv8t4nZiwFC-kpFJSI2chFu9exkZuaRCswm5e2XT1vBVw3kIE3ryUinFXxJACVK931T-ipUjLfsRTcm0c0l3MQTI_qCXkHAifeCcnV8GWksUrHQ-2FkuVF9o5RX_JobYh9c7EdaOM9HwRMi-xZDWmzz0wkkQtYrC0Rwv882tWyVU0j9RjqS01kN7_SxTx2OT4tLoTqEJ0tEAfEBg5Zp4aSIUyr"/>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-medium px-1.5 py-0.5 rounded text-[10px] tracking-wide">
+                    45:02
+                </div>
+</div>
+<div class="flex gap-3 p-3 items-start">
+<div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold shrink-0">
+                    K
+                </div>
+<div class="flex flex-col flex-1 gap-1">
+<div class="flex justify-between items-start">
+<h3 class="text-base font-semibold text-gray-900 dark:text-white leading-tight line-clamp-2">
+                            React Native ile Sıfırdan Mobil Uygulama Geliştirme - Full Kurs
+                        </h3>
+<button class="text-gray-900 dark:text-white p-1 -mr-2 -mt-2">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="text-xs text-gray-600 dark:text-text-secondary flex items-center flex-wrap gap-1">
+<span>Kod Dünyası</span>
+<span class="text-[10px]">•</span>
+<span>1.2M görüntüleme</span>
+<span class="text-[10px]">•</span>
+<span>1 yıl önce</span>
+</div>
+<div class="mt-1 flex items-center gap-1">
+<span class="bg-gray-200 dark:bg-[#333333] text-gray-700 dark:text-gray-300 text-[10px] px-1.5 py-0.5 rounded font-medium">CC</span>
+<span class="bg-red-600 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">YENİ</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Result 3 -->
+<article class="flex flex-col group active:bg-gray-50 dark:active:bg-[#1a1a1a] transition-colors">
+<div class="relative w-full aspect-video">
+<img alt="Abstract fluid art painting" class="w-full h-full object-cover" data-alt="Abstract fluid blue and orange paint textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMOKQRb87H98wybdTvEp8VgpESlGBXvFw7sejxKOv1KCLivB8tElfy3OqFxoEOutBAeop24e8vjzvCGwkveZ9tDjNPRBVBCFVQGb8eedpxJkS1G3XPS_F-fi5c1nvetZhBwTgr_nIhOQ6uKP6-uu9ghpRQKcjim1H_VYhK8-pttrZqKna3H7Zt7qvK6SDapYo0NGXBxMckomIxS_Ir60NE7RqGLXvs8tI-hrzQrFCG_3rO8R50q8sXr0YN8hJnzl7cHbhSxSI8G0cX"/>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-medium px-1.5 py-0.5 rounded text-[10px] tracking-wide">
+                    08:14
+                </div>
+</div>
+<div class="flex gap-3 p-3 items-start">
+<img alt="Woman smiling avatar" class="w-10 h-10 rounded-full object-cover shrink-0" data-alt="Profile picture of a female creative director" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3urbdt8Br5eN3_ha5QisQ7CAHrv0G8oOxeuDbPrPqHMc77pKu0TdhYNqd8KaDin--0ljoJQNFtcIV3P52vEpL_AzkGvq4qvfBKr6L8TL6KKNfslmuMOvI6Uu0ClUFYpmecvS6iI1oVR4qrag5ZZHFVzhihPeVrB33XXBraf_TAei4n1QrjAK0L1TItJy3g5S8nOBO6JTd1H8AbUtayLqxAny8dWXAuJpXEvCbBPTX0QNZwYfvPIq-JGwPPDPUqhJZ__WTIPq1tahF"/>
+<div class="flex flex-col flex-1 gap-1">
+<div class="flex justify-between items-start">
+<h3 class="text-base font-semibold text-gray-900 dark:text-white leading-tight line-clamp-2">
+                            Figma'da Auto Layout Kullanımı - İleri Seviye Teknikler
+                        </h3>
+<button class="text-gray-900 dark:text-white p-1 -mr-2 -mt-2">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="text-xs text-gray-600 dark:text-text-secondary flex items-center flex-wrap gap-1">
+<span>Creative Studio</span>
+<span class="text-[10px]">•</span>
+<span>54B görüntüleme</span>
+<span class="text-[10px]">•</span>
+<span>3 hafta önce</span>
+</div>
+</div>
+</div>
+</article>
+</main>
+<!-- Bottom Nav -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light dark:bg-[#0f0f0f] border-t border-gray-200 dark:border-[#222222] px-2 pb-6 pt-2 z-40">
+<div class="flex justify-around items-end">
+<a class="flex flex-col items-center gap-1 w-16 group" href="#">
+<span class="material-symbols-outlined text-2xl text-gray-900 dark:text-white font-[fill]">home</span>
+<span class="text-[10px] font-medium text-gray-900 dark:text-white">Ana Sayfa</span>
+</a>
+<a class="flex flex-col items-center gap-1 w-16 group" href="#">
+<span class="material-symbols-outlined text-2xl text-gray-500 dark:text-text-secondary font-light group-hover:text-gray-900 dark:group-hover:text-white transition-colors">play_circle</span>
+<span class="text-[10px] font-medium text-gray-500 dark:text-text-secondary group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Shorts</span>
+</a>
+<a class="flex flex-col items-center gap-1 w-16 group" href="#">
+<div class="w-8 h-8 rounded-full border-2 border-gray-500 dark:border-text-secondary flex items-center justify-center p-0.5">
+<span class="material-symbols-outlined text-lg text-gray-500 dark:text-text-secondary">add</span>
+</div>
+</a>
+<a class="flex flex-col items-center gap-1 w-16 group" href="#">
+<span class="material-symbols-outlined text-2xl text-gray-500 dark:text-text-secondary font-light group-hover:text-gray-900 dark:group-hover:text-white transition-colors">subscriptions</span>
+<span class="text-[10px] font-medium text-gray-500 dark:text-text-secondary group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Abonelikler</span>
+</a>
+<a class="flex flex-col items-center gap-1 w-16 group" href="#">
+<span class="material-symbols-outlined text-2xl text-gray-500 dark:text-text-secondary font-light group-hover:text-gray-900 dark:group-hover:text-white transition-colors">video_library</span>
+<span class="text-[10px] font-medium text-gray-500 dark:text-text-secondary group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Kitaplık</span>
+</a>
+</div>
+</nav>
+</body></html>
